@@ -1,0 +1,23 @@
+{
+  "name": "mesozoic-island",
+  "version": "1.0.0",
+  "description": "A database to track employees, exhibits, dinosaurs, and shifts for a dinosaur theme park",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stmii/mesozoic-island.git"
+  },
+  "author": "Steven Todd McIntyre II",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/stmii/mesozoic-island/issues"
+  },
+  "homepage": "https://github.com/stmii/mesozoic-island#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "forever": "^4.0.3"
+  }
+}
