@@ -1,0 +1,84 @@
+<html>
+<head>
+<title>Mesozoic Island</title>
+</head>
+
+<body>
+<h1>Welcome to Mesozoic Island!</h1>
+<br>
+<h2>Employees and Volunteers</h2>
+
+<div id="browse" style="display: block">
+<p><strong>View Employees and Volunteers</strong></p>
+<table border="1" cellpadding="5">
+	<tr>
+		<th><a href='#'>New</a></th>
+		<th></th>
+		<th>ID</th>
+		<th>Name</th>
+		<th>Job Title</th>
+		<th>Hourly Wage</th>
+	</tr>
+	<tr>
+		<td><a href='#'>Edit</a></th>
+		<td><a href='#'>Delete</a></td>
+		<td>1</td>
+		<td>Nico Smith</td>
+		<td>Interpreter</td>
+		<td>0</td>
+	</tr>
+</table>
+<p>&nbsp;</p>
+</div>
+<div id="insert" style="display: block">
+	<form id="addEmployee">
+		<legend><strong>Add Employee or Volunteer</strong></legend>
+			<fieldset class="fields">
+				<label> Name </label> <input type="text" name="name">
+				<label> Job Title </label> <input type="text" name="job_title">
+				<label> Hourly Wage </label> <input type="text" name="hourly">
+			</fieldset>
+			<input class="btn" type="submit" id="addEmployee" value = "Add an Employee or Volunteer">
+			<input class="btn" type="button" value="cancel">
+	</form>
+</div>
+
+<p>&nbsp;</p>
+<div id="update" style="display: block">
+	<form id="updateEmployee">
+		<legend><strong>Update Employee or Volunteer</strong></legend>
+			<fieldset class="fields">
+			<label>ID:</label> 1
+				<label> Name </label> <input type="text" value="Nico Smith" name="name">
+				<label> Job Title </label> <input type="text" value="Interpreter" name="job_title">
+				<label> Hourly Wage </label> <input type="text" value="0" name="hourly">
+			</fieldset>
+			<input class="btn" type="submit" id="updateSaveEmployee" value="Save Update Employee">
+				<input class="btn" type="button" value="cancel" >
+	</form>
+</div>
+<p>&nbsp;</p>
+<div id="delete" style="display: block">
+  <form id="deleteEmployees">
+      <legend><strong>Delete Employee</strong></legend>
+          <fieldset class="fields">
+          <p>Are you sure you wish to delete the following?</p>
+          <label>ID:</label> 1
+            <label> Name </label> Nico Smith
+            
+    </fieldset>
+    <input class="btn" type="submit" id="DeleteEmployee" value="Delete Employee">
+          <input class="btn" type="button" value="cancel" >
+  </form> 
+</div>
+
+<h2>Index</h2>
+<ul>
+	<li><a href="species.html">Species</a></li>
+	<li><a href="individuals.html">Individuals</a></li>
+	<li><a href="exhibits.html">Exhibits</a></li>
+	<li><a href="employees.html">Employees and Volunteers</a></li>
+	<li><a href="shifts.html">View Shifts</a></li>
+</ul>
+</body>
+</html>

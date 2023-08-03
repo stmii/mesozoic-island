@@ -1,0 +1,92 @@
+<html>
+<head>
+<title>Mesozoic Island</title>
+</head>
+
+<body>
+<h1>Welcome to Mesozoic Island!</h1>
+<br>
+<h2>Exhibits</h2>
+
+<div id="browse" style="display: block">
+<p><strong>View Exhibits</strong></p>
+<table border="1" cellpadding="5">
+	<tr>
+		<th><a href='#'>New</a></th>
+		<th></th>
+		<th>ID</th>
+		<th>Exhibit Name</th>
+		<th>has dinosaurs?</th>
+		<th>aquatic</th>
+		<th>land</th>
+		<th>flying</th>
+	</tr>
+	<tr>
+		<td><a href='#'>Edit</a></th>
+		<td><a href='#'>Delete</a></td>
+		<td>1</td>
+		<td>Defensive Dinos</td>
+		<td>yes/td>
+		<td>no</td>
+		<td>yes</td>
+		<td>no</td>
+	</tr>
+</table>
+<p>&nbsp;</p>
+</div>
+<div id="insert" style="display: block">
+	<form id="addExhibit">
+		<legend><strong>Add Exhibit</strong></legend>
+			<fieldset class="fields">
+				<label> Exhibit Name </label> <input type="text" name="name">
+				<label> Has Dinosaurs? </label> <input type="checkbox" name="has_dinos">
+				<label> Aquatic?  </label> <input type="checkbox" name="aquatic">
+				<label> Land? </label> <input type="checkbox" name="land">
+				<label> Flying? </label> <input type="checkbox" name="flying">
+			</fieldset>
+			<input class="btn" type="submit" id="addExhibit" value = "Add an Exhibit">
+			<input class="btn" type="button" value="cancel">
+	</form>
+</div> <!-- browse -->
+
+<p>&nbsp;</p>
+<div id="update" style="display: block">
+	<form id="updateExhibit">
+		<legend><strong>Update Exhibit</strong></legend>
+			<fieldset class="fields">
+			<label>ID:</label> 1
+				<label> Exhibit Name </label> <input type="text" value="Defensive Dinos" name="name">
+				<label> Has Dinosaurs? </label> <input type="checkbox" name="has_dinos" checked>
+				<label> Aquatic? </label> <input type="checkbox" name="aquatic">
+				<label> Land? </label> <input type="checkbox" name="land" checked>
+				<label> Flying? </label> <input type="checkbox" name="flying">
+			</fieldset>
+			<input class="btn" type="submit" id="updateSaveExhibit" value="Save Update Exhibit">
+				<input class="btn" type="button" value="cancel" >
+	</form>
+</div>
+<p>&nbsp;</p>
+<div id="delete" style="display: block">
+  <form id="deleteExhibit">
+      <legend><strong>Delete Exhibit</strong></legend>
+          <fieldset class="fields">
+          <p>Are you sure you wish to delete the following?</p>
+          <label>ID:</label> 1
+            <label> Exhibit Name </label> Defensive Dinos
+            
+    </fieldset>
+    <input class="btn" type="submit" id="DeleteExhibit" value="Delete Exhibit">
+          <input class="btn" type="button" value="cancel" >
+  </form> 
+</div>
+
+<h2>Index</h2>
+<ul>
+	<li><a href="species.html">Species</a></li>
+	<li><a href="individuals.html">Individuals</a></li>
+	<li><a href="exhibits.html">Exhibits</a></li>
+	<li><a href="employees.html">Employees and Volunteers</a></li>
+	<li><a href="shifts.html">View Shifts</a></li>
+</ul>
+</body>
+</html>

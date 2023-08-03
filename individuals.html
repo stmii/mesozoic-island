@@ -1,0 +1,104 @@
+<html>
+<head>
+<title>Mesozoic Island</title>
+</head>
+
+<body>
+<h1>Welcome to Mesozoic Island!</h1>
+<br>
+<h2>Individuals</h2>
+
+<div id="browse" style="display: block">
+<p><strong>View Individuals</strong></p>
+<table border="1" cellpadding="5">
+	<tr>
+		<th><a href='#'>New</a></th>
+		<th></th>
+		<th>ID</th>
+		<th>Species Name</th>
+		<th>Exhibit Name</th>
+		<th>Dinosaur Name</th>
+		<th>Dinosaur Birthdate</th>
+	</tr>
+	<tr>
+		<td><a href='#'>Edit</a></th>
+		<td><a href='#'>Delete</a></td>
+		<td>1</td>
+		<td>Ankylosaur</td>
+		<td>Defensive Dinos</td>
+		<td>Thomas</td>
+		<td>2021-12-17</td>
+	</tr>
+</table>
+<p>&nbsp;</p>
+</div>
+<div id="insert" style="display: block">
+	<form id="addIndividual">
+		<legend><strong>Add Individual</strong></legend>
+			<fieldset class="fields">
+				<label> Species Name </label> <select name="species">
+					<option value="0">&nbsp;</option>
+					<option value="1">Ankylosaur</option>
+					<option value="2">Plesiosaur</option>
+					</select>
+				<label> Exhibit Name </label> <select name="exhibit">
+					<option value="0">&nbsp;</option>
+					<option value="1">Defensive Dinos</option>
+					<option value="2">In the Depths</option>
+					</select>
+				<label> Dinosaur Name </label> <input type="text" name="name">
+				<label> Dinosaur Birthdate </label> <input type="text" name="birthdate">
+			</fieldset>
+			<input class="btn" type="submit" id="addIndividual" value = "Add an Individual Dinosaur">
+			<input class="btn" type="button" value="cancel">
+	</form>
+</div> <!-- browse -->
+
+<p>&nbsp;</p>
+<div id="update" style="display: block">
+	<form id="updateIndividual">
+		<legend><strong>Update Individual</strong></legend>
+			<fieldset class="fields">
+			<label>ID:</label> 1
+				<label> Species Name </label> <select name="species">
+					<option value="0">&nbsp;</option>
+					<option value="1">Ankylosaur</option>
+					<option value="2">Plesiosaur</option>
+					</select>
+				<label> Exhibit Name </label> <select name="exhibit">
+					<option value="0">&nbsp;</option>
+					<option value="1">Defensive Dinos</option>
+					<option value="2">In the Depths</option>
+					</select>
+				<label> Dinosaur Name </label> <input type="text" value="Thomas" name="name">
+				<label> Dinosaur Birthdate </label> <input type="text" value="2021-12-17" name="birthdate">
+			</fieldset>
+			<input class="btn" type="submit" id="updateSaveIndividual" value="Save Update Individual">
+				<input class="btn" type="button" value="cancel" >
+	</form>
+</div>
+<p>&nbsp;</p>
+<div id="delete" style="display: block">
+  <form id="deleteIndividual">
+      <legend><strong>Delete Individual</strong></legend>
+          <fieldset class="fields">
+          <p>Are you sure you wish to delete the following?</p>
+          <label>ID:</label> 1
+            <label> Dinosaur Name </label> Thomas
+            
+    </fieldset>
+    <input class="btn" type="submit" id="DeleteIndividual" value="Delete Individual">
+          <input class="btn" type="button" value="cancel" >
+  </form> 
+</div>
+
+<h2>Index</h2>
+<ul>
+	<li><a href="species.html">Species</a></li>
+	<li><a href="individuals.html">Individuals</a></li>
+	<li><a href="exhibits.html">Exhibits</a></li>
+	<li><a href="employees.html">Employees and Volunteers</a></li>
+	<li><a href="shifts.html">View Shifts</a></li>
+</ul>
+</body>
+</html>
