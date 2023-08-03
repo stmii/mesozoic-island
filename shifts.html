@@ -1,0 +1,107 @@
+<html>
+<head>
+<title>Mesozoic Island</title>
+</head>
+
+<body>
+<h1>Welcome to Mesozoic Island!</h1>
+<br>
+<h2>Shifts</h2>
+
+<div id="browse" style="display: block">
+<p><strong>View Shifts</strong></p>
+<table border="1" cellpadding="5">
+	<tr>
+		<th><a href='#'>New</a></th>
+		<th></th>
+		<th>ID</th>
+		<th>Employee Name</th>
+		<th>Exhibit Name(s)</th>
+		<th>Duties</th>
+		<th>Start Time</th>
+		<th>End Time</th>
+	</tr>
+	<tr>
+		<td><a href='#'>Edit</a></th>
+		<td><a href='#'>Delete</a></td>
+		<td>1</td>
+		<td>Nico Smith</td>
+		<td>Defensive Dinos</td>
+		<td>Engage public</td>
+		<td>8:00AM</td>
+		<td>12:00PM</td>
+	</tr>
+</table>
+<p>&nbsp;</p>
+</div>
+<div id="insert" style="display: block">
+	<form id="addShift">
+		<legend><strong>Add Shift</strong></legend>
+			<fieldset class="fields">
+				<label> Employee Name </label> <select name="employee">
+					<option value="0">&nbsp;</option>
+					<option value="1">Nico Smith</option>
+					</select>
+				<label> Exhibit Name(s) </label> <select name="exhibit" multiple>
+					<option value="0">&nbsp;</option>
+					<option value="1">Defensive Dinos</option>
+					<option value="2">In the Depths</option>
+					</select>
+				<label> Duties </label> <input type="text" name="duties">
+				<label> Start Time </label> <input type="time" name="start_time">
+				<label> End Time </label> <input type="time" name="end_time">
+			</fieldset>
+			<input class="btn" type="submit" id="addShift" value = "Add a shift">
+			<input class="btn" type="button" value="cancel">
+	</form>
+</div>
+
+<p>&nbsp;</p>
+<div id="update" style="display: block">
+	<form id="updateShift">
+		<legend><strong>Update Shift</strong></legend>
+			<fieldset class="fields">
+			<label>ID:</label> 1
+				<label> Employee Name </label> <select name="employee">
+					<option value="0">&nbsp;</option>
+					<option value="1">Nico Smith</option>
+					</select>
+				<label> Exhibit Name(s) </label> <select name="exhibit" multiple>
+					<option value="0">&nbsp;</option>
+					<option value="1">Defensive Dinos</option>
+					<option value="2">In the Depths</option>
+					</select>
+				<label> Duties </label> <input type="text" value="Engage public" name="duties">
+				<label> Start Time </label> <input type="time" name="start_time">
+				<label> End Time </label> <input type="time" name="end_time">
+			</fieldset>
+			<input class="btn" type="submit" id="updateSaveShift" value="Save Update Shift">
+				<input class="btn" type="button" value="cancel" >
+	</form>
+</div>
+<p>&nbsp;</p>
+<div id="delete" style="display: block">
+  <form id="deleteShift">
+      <legend><strong>Delete Shift</strong></legend>
+          <fieldset class="fields">
+          <p>Are you sure you wish to delete the following?</p>
+          <label>ID:</label> 1
+            <label> Shift Name </label> Nico
+	  <label> Start Time </label> 8:00AM
+            
+    </fieldset>
+    <input class="btn" type="submit" id="DeleteShift" value="Delete Shift">
+          <input class="btn" type="button" value="cancel" >
+  </form> 
+</div>
+
+<h2>Index</h2>
+<ul>
+	<li><a href="species.html">Species</a></li>
+	<li><a href="individuals.html">Individuals</a></li>
+	<li><a href="exhibits.html">Exhibits</a></li>
+	<li><a href="employees.html">Employees and Volunteers</a></li>
+	<li><a href="shifts.html">View Shifts</a></li>
+</ul>
+</body>
+</html>

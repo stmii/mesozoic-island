@@ -1,0 +1,88 @@
+<html>
+<head>
+<title>Mesozoic Island</title>
+</head>
+
+<body>
+<h1>Welcome to Mesozoic Island!</h1>
+<br>
+<h2>Species</h2>
+
+<div id="browse" style="display: block">
+<p><strong>View Species</strong></p>
+<table border="1" cellpadding="5">
+	<tr>
+		<th><a href='#'>New</a></th>
+		<th></th>
+		<th>ID</th>
+		<th>Species Name</th>
+		<th>Period</th>
+		<th>Type</th>
+		<th>Diet</th>
+	</tr>
+	<tr>
+		<td><a href='#'>Edit</a></th>
+		<td><a href='#'>Delete</a></td>
+		<td>1</td>
+		<td>Ankylosaur</td>
+		<td>Cretaceous</td>
+		<td>land</td>
+		<td>herbivore</td>
+	</tr>
+</table>
+<p>&nbsp;</p>
+</div>
+<div id="insert" style="display: block">
+	<form id="addSpecies">
+		<legend><strong>Add Species</strong></legend>
+			<fieldset class="fields">
+				<label> Species Name </label> <input type="text" name="name">
+				<label> Period </label> <input type="text" name="period">
+				<label> Type </label> <input type="text" name="type">
+				<label> Diet </label> <input type="text" name="diet">
+			</fieldset>
+			<input class="btn" type="submit" id="addSpecies" value = "Add a Species">
+			<input class="btn" type="button" value="cancel">
+	</form>
+</div> <!-- browse -->
+
+<p>&nbsp;</p>
+<div id="update" style="display: block">
+	<form id="updateSpecies">
+		<legend><strong>Update Species</strong></legend>
+			<fieldset class="fields">
+			<label>ID:</label> 1
+				<label> Species Name </label> <input type="text" value="Ankylosaur" name="name">
+				<label> Period </label> <input type="text" value="Cretaceous" name="eriod">
+				<label> Type </label> <input type="text" value="land" name="type">
+				<label> Diet </label> <input type="text" value="herbivore" name="diet">
+			</fieldset>
+			<input class="btn" type="submit" id="updateSaveSpecies" value="Save Update Species">
+				<input class="btn" type="button" value="cancel" >
+	</form>
+</div>
+<p>&nbsp;</p>
+<div id="delete" style="display: block">
+  <form id="deleteSpecies">
+      <legend><strong>Delete Species</strong></legend>
+          <fieldset class="fields">
+          <p>Are you sure you wish to delete the following?</p>
+          <label>ID:</label> 1
+            <label> Species Name </label> Ankylosaur
+            
+    </fieldset>
+    <input class="btn" type="submit" id="DeleteSpecies" value="Delete Species">
+          <input class="btn" type="button" value="cancel" >
+  </form> 
+</div>
+
+<h2>Index</h2>
+<ul>
+	<li><a href="species.html">Species</a></li>
+	<li><a href="individuals.html">Individuals</a></li>
+	<li><a href="exhibits.html">Exhibits</a></li>
+	<li><a href="employees.html">Employees and Volunteers</a></li>
+	<li><a href="shifts.html">View Shifts</a></li>
+</ul>
+</body>
+</html>
