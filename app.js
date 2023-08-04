@@ -14,7 +14,7 @@ PORT        = 1712;                 // Set a port number at the top so it's easy
 app.get('/', function(req, res)                 // This is the basic syntax for what is called a 'route'
 	{
 		// Define our queries
-		query1 = 'INSERT INTO Species (species_name, period, type, diet) VALUES ('Brontosaurus', 'Cretaceous', 'land', 'herbivore');';
+		query1 = 'INSERT INTO Species (species_name, period, type, diet) VALUES ("Brontosaurus", "Cretaceous", "land", "herbivore");';
 		query2 = 'SELECT * FROM Species;';
 
 		// INSERT
@@ -27,7 +27,7 @@ app.get('/', function(req, res)                 // This is the basic syntax for 
 			});
 		});
 	});
-});                                         // requesting the web site.
+
 
 /*
 	LISTENER
