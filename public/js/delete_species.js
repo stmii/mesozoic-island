@@ -1,5 +1,5 @@
 function deleteSpecies(speciesID) {
-    let link = '/delete-person-ajax/';
+    let link = '/delete-species-ajax/';
     let data = {
         id: speciesID
     };
