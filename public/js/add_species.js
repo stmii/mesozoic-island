@@ -74,6 +74,9 @@ addRowToTable = (data) => {
     let typeCell = document.createElement("TD");
     let dietCell = document.createElement("TD");
 
+    // Add an option to delete rows to the new rows inserted
+    let deleteCell = document.createElement('TD');
+
     // Fill cells with proper data
     idCell.innerText = newRow.id;
     speciesNameCell.innerText = newRow.sName;
@@ -81,12 +84,22 @@ addRowToTable = (data) => {
     typeCell.innerText = newRow.type;
     dietCell.innerText = newRow.diet;
 
+    deleteCell = document.createElement('button');
+    deleteCell.innerHTML = "Delete";
+    deleteCell.onclick = function() {
+        deleteSpecies(newRow.id);
+    };
+
     // Add new cells to row
     row.appendChild(idCell);
     row.appendChild(speciesNameCell);
     row.appendChild(periodCell);
     row.appendChild(typeCell);
     row.appendChild(dietCell);
+    row.appendChild(deleteCell);
+
+    // Add row attribute so the deleteRow function can find a newly added row
+    row.setAttribute('data-value', newRow.id);
 
     // Add row to the table now last step yay
     currentTable.appendChild(row)
