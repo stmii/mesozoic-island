@@ -15,7 +15,7 @@ var exphbs = require('express-handlebars');
 app.engine('.hbs', engine({extname: ".hbs"}));
 app.set('view engine', '.hbs');
 
-PORT        = 1712;                 // Set a port number at the top so it's easy to change in the future
+PORT        = 1714;                 // Set a port number at the top so it's easy to change in the future
 
 /*
 	ROUTES
@@ -39,7 +39,7 @@ app.post('/add-species-ajax', function(req, res)
 	// not applicable for SPECIES
 	
 	// Create the query and run it on the database
-	query1 = "INSERT INTO Species (species_name, period, type, diet) VALUES ('${data.sName}', '${data.period}', '${data.type}', '${data.diet}')";
+	query1 = `INSERT INTO Species (species_name, period, type, diet) VALUES ('${data.sName}', '${data.period}', '${data.type}', '${data.diet}')`;
 	db.pool.query(query1, function(error, rows, fields){
 		//Check for error
 		if (error) {
@@ -49,7 +49,7 @@ app.post('/add-species-ajax', function(req, res)
 		}
 		else
 		{
-			query2 = 'SELECT * FROM Species;';
+			query2 = "SELECT * FROM Species;";
 			db.pool.query(query2, function(error, rows, fields){
 				if (error) {
 					console.log(error);
