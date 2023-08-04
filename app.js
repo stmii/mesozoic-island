@@ -30,6 +30,38 @@ app.get('/', function(req, res)                 // This is the basic syntax for 
 		})
 	});
 
+app.post('/add-species-ajax', function(req, res)
+{
+	// Capture the incoming data and parse it back to a JS object
+	let data = req.body;
+
+	// Capture NULL values
+	// not applicable for SPECIES
+	
+	// Create the query and run it on the database
+	query1 = "INSERT INTO Species (species_name, period, type, diet) VALUES ('${data.sName}', '${data.period}', '${data.type}', '${data.diet}')";
+	db.pool.query(query1, function(error, rows, fields){
+		//Check for error
+		if (error) {
+			// Log the error to the terminal and send status
+			console.log(error);
+			res.sendStatus(400);
+		}
+		else
+		{
+			query2 = 'SELECT * FROM Species;';
+			db.pool.query(query2, function(error, rows, fields){
+				if (error) {
+					console.log(error);
+					res.sendStatus(400);
+				}
+				else {
+					res.send(rows);
+				}
+			})
+		}
+	})
+});
 
 /*
 	LISTENER
