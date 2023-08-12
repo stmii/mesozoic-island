@@ -78,8 +78,8 @@ addRowToTable = (data) => {
     let deleteCell = document.createElement('TD');
 
     // Fill cells with proper data
-    idCell.innerText = newRow.id;
-    speciesNameCell.innerText = newRow.sName;
+    idCell.innerText = newRow.species_ID;
+    speciesNameCell.innerText = newRow.species_name;
     periodCell.innerText = newRow.period;
     typeCell.innerText = newRow.type;
     dietCell.innerText = newRow.diet;
@@ -87,7 +87,7 @@ addRowToTable = (data) => {
     deleteCell = document.createElement('button');
     deleteCell.innerHTML = "Delete";
     deleteCell.onclick = function() {
-        deleteSpecies(newRow.id);
+        deleteSpecies(newRow.species_ID);
     };
 
     // Add new cells to row

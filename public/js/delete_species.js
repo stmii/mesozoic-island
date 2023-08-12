@@ -1,6 +1,6 @@
 function deleteSpecies(species_ID) {
     let data = {
-        id: species_ID
+        species_ID: species_ID
     };
 
     // Setup AJAX req

@@ -7,15 +7,20 @@ var express = require('express');   // We are using the express library for the 
 var app     = express();            // We need to instantiate an express object to interact with the server in our code
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
-app.use(express.static('public'));
 
+// Database
 var db = require('./database/db-connector.js');
+
+// Handlebars
 const { engine } = require('express-handlebars');
 var exphbs = require('express-handlebars');
 app.engine('.hbs', engine({extname: ".hbs"}));
 app.set('view engine', '.hbs');
 
-PORT        = 1717;                 // Set a port number at the top so it's easy to change in the future
+// Static Files
+app.use(express.static('public'));
+
+PORT        = 1718;                 // Set a port number at the top so it's easy to change in the future
 
 /*
 	ROUTES
@@ -62,7 +67,7 @@ app.post('/add-species-ajax/', function(req, res)
 					res.sendStatus(400);
 				}
 				else {
-          wait(100);
+
 					res.send(rows);
 				}
 			})
@@ -72,10 +77,10 @@ app.post('/add-species-ajax/', function(req, res)
 
 app.delete('/delete-species-ajax/', function(req,res,next){
 	let data = req.body;
-	let speciesID = parseInt(data.id);
+	let species_ID = parseInt(data.species_ID);
 	let deleteSpecies = `DELETE FROM Species WHERE species_ID = ?`;
   console.log('debug');	
-	db.pool.query(deleteSpecies, [speciesID], function(error, rows, fields) {
+	db.pool.query(deleteSpecies, [species_ID], function(error, rows, fields) {
 		if (error) {
 			console.log(error);
 			res.sendStatus(400);

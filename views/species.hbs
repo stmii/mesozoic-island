@@ -5,14 +5,21 @@
 
 <body>
 <h1>Welcome to Mesozoic Island!</h1>
-<br>
+<nav>
+        <a href="/">Index</a>
+        <a href="/species/">Species</a>
+        <a href="/individuals/">Individuals</a>
+        <a href="/exhibits/">Exhibits</a>
+        <a href="/employees/">Employees and Volunteers</a>
+        <a href="/shifts/">View/Edit Shifts</a>
+</nav>
 <h2>Species</h2>
 
 <div id="browse" style="display: block">
 <p><strong>View Species</strong></p>
 
 {{!-- Create a table --}}
-<table id="species-table" border="1" cellpadding="5">>
+<table id="species-table" border="1" cellpadding="5">
 	
 	{{!-- Header section --}}
 	<thead>
@@ -29,7 +36,7 @@
 	{{!-- Body section --}}
 	<tbody>
 		{{#each data}}
-		<tr data-value={{this.species_ID}}>>
+		<tr data-value={{this.species_ID}}>
 			<td>{{this.species_ID}}</td>
 			<td>{{this.species_name}}</td>
 			<td>{{this.period}}</td>
@@ -40,9 +47,10 @@
 		{{/each}}
 	</tbody>
 </table>
-<script src="./js/delete_species.js"></script>
+<script src="../js/delete_species.js"></script>
 
 {{!-- Form to add a record to the table --}}
+<div id="insert" style="display: block">
 <h2>Add a Species</h2>
 <p>To add a new Species, please enter its information below and click 'Submit'!</p>
 <form id="add-species-form-ajax">
@@ -61,7 +69,7 @@
 	<input type="submit">
 </form>
 
-<script src="./js/add_species.js"></script>
+<script src="../js/add_species.js"></script>
 
 	
 
@@ -79,45 +87,8 @@
 			<input class="btn" type="submit" id="addSpecies" value = "Add a Species">
 			<input class="btn" type="button" value="cancel">
 	</form>
-</div> <!-- browse -->
-
-<p>&nbsp;</p>
-<div id="update" style="display: block">
-	<form id="updateSpecies">
-		<legend><strong>Update Species</strong></legend>
-			<fieldset class="fields">
-			<label>ID:</label> 1
-				<label> Species Name </label> <input type="text" value="Ankylosaur" name="name">
-				<label> Period </label> <input type="text" value="Cretaceous" name="eriod">
-				<label> Type </label> <input type="text" value="land" name="type">
-				<label> Diet </label> <input type="text" value="herbivore" name="diet">
-			</fieldset>
-			<input class="btn" type="submit" id="updateSaveSpecies" value="Save Update Species">
-				<input class="btn" type="button" value="cancel" >
-	</form>
 </div>
 <p>&nbsp;</p>
-<div id="delete" style="display: block">
-  <form id="deleteSpecies">
-      <legend><strong>Delete Species</strong></legend>
-          <fieldset class="fields">
-          <p>Are you sure you wish to delete the following?</p>
-          <label>ID:</label> 1
-            <label> Species Name </label> Ankylosaur
-            
-    </fieldset>
-    <input class="btn" type="submit" id="DeleteSpecies" value="Delete Species">
-          <input class="btn" type="button" value="cancel" >
-  </form> 
-</div>
 
-<h2>Index</h2>
-<ul>
-	<li><a href="/species/">Species</a></li>
-	<li><a href="/individuals/">Individuals</a></li>
-	<li><a href="/exhibits/">Exhibits</a></li>
-	<li><a href="/employees/">Employees and Volunteers</a></li>
-	<li><a href="/shifts/">View/Edit Shifts</a></li>
-</ul>
 </body>
 </html>
