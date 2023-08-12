@@ -29,7 +29,7 @@ addSpecies.addEventListener('submit', function (e) {
 
     // Setup AJAX request
     var xhttp = new XMLHttpRequest();
-    xhttp.open("POST", "/add-species-ajax", true);
+    xhttp.open("POST", "/add-species-ajax/", true);
     xhttp.setRequestHeader('Content-type', 'application/json');
 
     // Tell our AJAX request how to resolve

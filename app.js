@@ -15,12 +15,18 @@ var exphbs = require('express-handlebars');
 app.engine('.hbs', engine({extname: ".hbs"}));
 app.set('view engine', '.hbs');
 
-PORT        = 1714;                 // Set a port number at the top so it's easy to change in the future
+PORT        = 1717;                 // Set a port number at the top so it's easy to change in the future
 
 /*
 	ROUTES
 */
-app.get('/', function(req, res)                 // This is the basic syntax for what is called a 'route'
+app.get('/', function(req, res)
+  {
+    res.render('index');
+  });
+
+
+app.get('/species/', function(req, res)                 // This is the basic syntax for what is called a 'route'
 	{
 		let query1 = "SELECT * FROM Species;";
 
@@ -30,11 +36,11 @@ app.get('/', function(req, res)                 // This is the basic syntax for 
 		})
 	});
 
-app.post('/add-species-ajax', function(req, res)
+app.post('/add-species-ajax/', function(req, res)
 {
 	// Capture the incoming data and parse it back to a JS object
 	let data = req.body;
-
+  console.log("add species debug");
 	// Capture NULL values
 	// not applicable for SPECIES
 	
@@ -56,9 +62,26 @@ app.post('/add-species-ajax', function(req, res)
 					res.sendStatus(400);
 				}
 				else {
+          wait(100);
 					res.send(rows);
 				}
 			})
+		}
+	})
+});
+
+app.delete('/delete-species-ajax/', function(req,res,next){
+	let data = req.body;
+	let speciesID = parseInt(data.id);
+	let deleteSpecies = `DELETE FROM Species WHERE species_ID = ?`;
+  console.log('debug');	
+	db.pool.query(deleteSpecies, [speciesID], function(error, rows, fields) {
+		if (error) {
+			console.log(error);
+			res.sendStatus(400);
+		} else {
+			res.sendStatus(204);
+		
 		}
 	})
 });

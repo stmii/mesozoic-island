@@ -1,5 +1,4 @@
 <html>
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <head>
 <title>Mesozoic Island</title>
 </head>
@@ -13,7 +12,7 @@
 <p><strong>View Species</strong></p>
 
 {{!-- Create a table --}}
-<table id="species-table" border="1" cellpadding="5">
+<table id="species-table" border="1" cellpadding="5">>
 	
 	{{!-- Header section --}}
 	<thead>
@@ -30,18 +29,18 @@
 	{{!-- Body section --}}
 	<tbody>
 		{{#each data}}
-		<tr>
+		<tr data-value={{this.species_ID}}>>
 			<td>{{this.species_ID}}</td>
 			<td>{{this.species_name}}</td>
 			<td>{{this.period}}</td>
 			<td>{{this.type}}</td>
 			<td>{{this.diet}}</td>
-			<td><button onclick="deleteSpecies({{this.id}})">Delete</button></td>
+			<td><button onclick="deleteSpecies({{this.species_ID}})">Delete</button></td>
 		</tr>
 		{{/each}}
 	</tbody>
 </table>
-</script src="./js/delete_species.js"></script>
+<script src="./js/delete_species.js"></script>
 
 {{!-- Form to add a record to the table --}}
 <h2>Add a Species</h2>
@@ -114,11 +113,11 @@
 
 <h2>Index</h2>
 <ul>
-	<li><a href="species.html">Species</a></li>
-	<li><a href="individuals.html">Individuals</a></li>
-	<li><a href="exhibits.html">Exhibits</a></li>
-	<li><a href="employees.html">Employees and Volunteers</a></li>
-	<li><a href="shifts.html">View Shifts</a></li>
+	<li><a href="/species/">Species</a></li>
+	<li><a href="/individuals/">Individuals</a></li>
+	<li><a href="/exhibits/">Exhibits</a></li>
+	<li><a href="/employees/">Employees and Volunteers</a></li>
+	<li><a href="/shifts/">View/Edit Shifts</a></li>
 </ul>
 </body>
 </html>

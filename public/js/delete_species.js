@@ -1,25 +1,35 @@
-function deleteSpecies(speciesID) {
-    let link = '/delete-species-ajax/';
+function deleteSpecies(species_ID) {
     let data = {
-        id: speciesID
+        id: species_ID
     };
 
-    $.ajax({
-        url: link, 
-        type: 'DELETE',
-        data: JSON.stringify(data),
-        contentType: "application/json; charset=utf-8",
-        success: function(result) {
-            deleteRow(speciesID)
-        }
-    });
-}
+    // Setup AJAX req
+    var xhttp = new XMLHttpRequest();
+    xhttp.open("DELETE", "/delete-species-ajax/", true);
+    xhttp.setRequestHeader("Content-type", "application/json");
 
-function deleteRow(speciesID) {
-    let table = document.getElementById('species-table')
-    for (let i = 0, row; row = table.rows[i]; i++) {
-        if (table.rows[i].getAttribute('data-value') == speciesID) {
-            table.deleteRow(i);
+    // Tell AJAX how to resolve
+    xhttp.onreadystatechange = () => {
+        if (xhttp.readyState == 4 && xhttp.status == 204) {
+
+            // delete the data from the table
+            deleteRow(species_ID);
+        }
+        else if (xhttp.readyState == 4 && xhttp.status != 204) {
+            console.log("There was an error with the input.")
         }
     }
+    // Send the request and wait for the response
+    xhttp.send(JSON.stringify(data));
 }
+
+function deleteRow(species_ID){
+    let table = document.getElementByID("species-table");
+    for (let i = 0, row; row = table.rows[i]; i++) {
+      if (table.rows[i].getAttribute("data-value") == species_ID) {
+	      table.deleteRow(i);
+	      break;
+	    }
+    }
+}
+
