@@ -16,10 +16,10 @@
 <h2>Species</h2>
 
 <div id="browse" style="display: block">
-<p><strong>View Species</strong></p>
+<p><strong>View Employees and Volunteers</strong></p>
 
 {{!-- Create a table --}}
-<table id="species-table" border="1" cellpadding="5">
+<table id="employees-table" border="1" cellpadding="5">
 	
 	{{!-- Header section --}}
 	<thead>
@@ -29,31 +29,27 @@
 				{{@key}}
 			</th>
 			{{/each}}
-			<th>delete</th>
 		</tr>
 	</thead>
 
 	{{!-- Body section --}}
 	<tbody>
 		{{#each data}}
-		<tr data-value={{this.species_ID}}>
-			<td>{{this.species_ID}}</td>
-			<td>{{this.species_name}}</td>
-			<td>{{this.period}}</td>
-			<td>{{this.type}}</td>
-			<td>{{this.diet}}</td>
-			<td><button onclick="deleteSpecies({{this.species_ID}})">Delete</button></td>
+		<tr data-value={{this.employee_ID}}>
+			<td>{{this.employee_ID}}</td>
+			<td>{{this.employee_name}}</td>
+			<td>{{this.employee_job_title}}</td>
+			<td>{{this.employee_hourly}}</td>
 		</tr>
 		{{/each}}
 	</tbody>
 </table>
-<script src="../js/delete_species.js"></script>
 
 {{!-- Form to add a record to the table --}}
 <div id="insert" style="display: block">
-<h2>Add a Species</h2>
-<p>To add a new Species, please enter its information below and click 'Submit'!</p>
-<form id="add-species-form-ajax">
+<h2>Add an Employee or Volunteer</h2>
+<p>To add a new Employee or Volunteer, please enter their information below and click 'Submit'! (volunteers will have an hourly rate of 0)</p>
+<form id="add-employee-form-ajax">
 
 	<label for="species_name_input">Species Name: </label>
 	<input type="text" name="species_name_input" id="species_name_input">
@@ -70,7 +66,7 @@
 	<input type="submit">
 </form>
 
-<script src="../js/add_species.js"></script>
+<script src="../js/add_employee.js"></script>
 
 <p>&nbsp;</p>
 </div>

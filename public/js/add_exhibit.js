@@ -1,35 +1,38 @@
 // Get objects we need to modify
-let addDinosaur = document.getElementById('add-dinosaur-form-ajax');
+let addExhibit = document.getElementById('add-exhibit-form-ajax');
 
 // Modify objects that we need
-addDinosaur.addEventListener('submit', function (e) {
+addExhibit.addEventListener('submit', function (e) {
 
     // Prevent form from submitting
     e.preventDefault();
 
     //Get form fields we need to get data from 
-    let inputDinosaurName = document.getElementById('dinosaur_name_input');
-    let inputSpeciesID = document.getElementById('species_ID_input');
-    let inputExhibitID = document.getElementById('exhibit_ID_input');
-    let inputDinosaurBirthdate = document.getElementById('dinosaur_birthdate_input');
+    let inputExhibitName = document.getElementById('exhibit_name_input');
+    let inputHasDinosaurs = document.getElementById('has_dinosaurs_input');
+    let inputAquatic = document.getElementById('aquatic_input');
+    let inputLand = document.getElementById('land_input');
+    let inputFlying = document.getElementById('flying_input');
 
     // Get values from the form fields
-    let dinosaurNameValue = inputDinosaurName.value;
-    let speciesIDValue = inputSpeciesID.value;
-    let exhibitIDValue = inputExhibitID.value;
-    let dinosaurBirthdateValue = inputDinosaurBirthdate.value;
+    let exhibitNameValue = inputExhibitName.value;
+    let hasDinosaursValue = inputHasDinosaurs.value;
+    let aquaticValue = inputAquatic.value;
+    let landValue = inputLand.value;
+    let flyingValue = inputFlying.value;
 
     // Put data into a javascript object
     let data = {
-        dinosaur_name: dinosaurNameValue,
-        species_ID: speciesIDValue,
-        exhibit_ID: exhibitIDValue,
-        dinosaur_birthdate: dinosaurBirthdateValue
+        exhibit_name: exhibitNameValue,
+        has_dinosaurs: hasDinosaursValue,
+        aquatic: aquaticValue,
+        land: landValue,
+	flying: flyingValue
     }
 
     // Setup AJAX request
     var xhttp = new XMLHttpRequest();
-    xhttp.open("POST", "/add-dinosaur-ajax/", true);
+    xhttp.open("POST", "/add-exhibit-ajax/", true);
     xhttp.setRequestHeader('Content-type', 'application/json');
 
     // Tell our AJAX request how to resolve
@@ -40,10 +43,11 @@ addDinosaur.addEventListener('submit', function (e) {
             addRowToTable(xhttp.response);
 
             // Clear the input fields for another transaction
-            inputDinosaurName.value = '';
-            inputSpeciesID.value = '';
-            inputExhibitID.value = '';
-            inputDinosaurBirthdate.value = '';
+            inputExhibitName.value = '';
+            inputHasDinosaurs.value = '';
+            inputAquatic.value = '';
+            inputLand.value = '';
+	    inputFlying.value = '';
         }
         else if (xhttp.readyState == 4 && xhttp.status != 200) {
             console.log("There was an error with this input")
@@ -57,7 +61,7 @@ addDinosaur.addEventListener('submit', function (e) {
 addRowToTable = (data) => {
 
     // Get a reference to the current table on the page and clear it out
-    let currentTable = document.getElementById('dinosaurs-table');
+    let currentTable = document.getElementById('exhibits-table');
 
     // Get location where new row should be inserted
     let newRowIndex = currentTable.rows.length;
@@ -69,24 +73,27 @@ addRowToTable = (data) => {
     // Create row and the cells for it
     let row = document.createElement("TR");
     let idCell = document.createElement("TD");
-    let speciesIDCell = document.createElement("TD");
-    let exhibitIDCell = document.createElement("TD");
-    let dinosaurNameCell = document.createElement("TD");
-    let dinosaurBirthdateCell = document.createElement("TD");
+    let exhibitNameCell = document.createElement("TD");
+    let hasDinosaursCell = document.createElement("TD");
+    let aquaticCell = document.createElement("TD");
+    let landCell = document.createElement("TD");
+    let flyingCell = document.createElement("TD");
 
     // Fill cells with proper data
-    idCell.innerText = newRow.dinosaur_ID;
-    speciesIDCell.innerText = newRow.species_ID;
-    exhibitIDCell.innerText = newRow.exhibit_ID;
-    dinosaurNameCell.innerText = newRow.dinosaur_name;
-    dinosaurBirthdateCell.innerText = newRow.dinosaur_birthdate;
+    idCell.innerText = newRow.exhibit_ID;
+    exhibitNameCell.innerText = newRow.exhibit_name;
+    hasDinosaursCell.innerText = newRow.has_dinosaurs;
+    aquaticCell.innerText = newRow.aquatic;
+    landCell.innerText = newRow.land;
+    flyingCell.innerText = newRow.flying;
 
     // Add new cells to row
     row.appendChild(idCell);
-    row.appendChild(speciesIDCell);
-    row.appendChild(exhibitIDCell);
-    row.appendChild(dinosaurNameCell);
-    row.appendChild(dinosaurBirthdateCell);
+    row.appendChild(exhibitNameCell);
+    row.appendChild(hasDinosaursCell);
+    row.appendChild(aquaticCell);
+    row.appendChild(landCell);
+    row.appendChild(flyingCell);
 
     // Add row to the table now last step yay
     currentTable.appendChild(row)
