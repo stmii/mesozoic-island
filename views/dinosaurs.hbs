@@ -1,0 +1,87 @@
+<html>
+<head>
+<title>Mesozoic Island</title>
+</head>
+
+<body>
+<h1>Welcome to Mesozoic Island!</h1>
+<nav>
+        <a href="/">Index</a>
+        <a href="/species/">Species</a>
+        <a href="/dinosaurs/">Dinosaurs</a>
+        <a href="/exhibits/">Exhibits</a>
+        <a href="/employees/">Employees and Volunteers</a>
+        <a href="/shifts/">View/Edit Shifts</a>
+</nav>
+<h2>Dinosaurs</h2>
+
+<div id="browse" style="display: block">
+<p><strong>View Dinosaurs</strong></p>
+
+{{!-- Create a table --}}
+<table id="dinosaurs-table" border="1" cellpadding="5">
+	
+	{{!-- Header section --}}
+	<thead>
+		<tr>
+			{{#each data.[0]}}
+			<th>
+				{{@key}}
+			</th>
+			{{/each}}
+		</tr>
+	</thead>
+
+	{{!-- Body section --}}
+	<tbody>
+		{{#each data}}
+		<tr data-value={{this.dinosaur_ID}}>
+			<td>{{this.dinosaur_ID}}</td>
+			<td>{{this.species_ID}}</td>
+			<td>{{this.exhibit_ID}}</td>
+			<td>{{this.dinosaur_name}}</td>
+			<td>{{this.dinosaur_birthdate}}</td>
+			
+		</tr>
+		{{/each}}
+	</tbody>
+</table>
+
+
+{{!-- Form to add a record to the table --}}
+<div id="insert" style="display: block">
+<h2>Add a Dinosaur</h2>
+<p>To add a new Species, please enter its information below and click 'Submit'!</p>
+<form id="add-dinosaur-form-ajax">
+
+	<label for="dinosaur_name_input">Dinosaur Name: </label>
+	<input type="text" name="dinosaur_name_input" id="dinosaur_name_input">
+	
+	<label for="species_ID_input">Species: </label>
+	<select name="species_ID_input" id="species_ID_input">
+		<option value="">Select a Species: </option>
+		{{#each species}}
+		<option value="{{this.species_ID}}">{{this.species_name}}</option>
+		{{/each}}
+	</select>
+	
+	<label for="exhibit_name_input">Exhibit: </label>
+	<select name="exhibit_ID_input" id="exhibit_ID_input">
+		<option value="">Select an Exhibit: </option>
+		{{#each exhibits}}
+		<option value="{{this.exhibit_ID}}">{{this.exhibit_name}}</option>
+		{{/each}}
+	</select>	
+
+	<label for="dinosaur_birthdate_input">Dinosaur Birthdate: </label>
+	<input type="date" name="dinosaur_birthdate_input" id="dinosaur_birthdate_input">
+
+	<input type="submit">
+</form>
+
+<script src="../js/add_dinosaur.js"></script>
+
+<p>&nbsp;</p>
+</div>
+</body>
+</html>

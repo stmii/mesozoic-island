@@ -99,14 +99,9 @@ addRowToTable = (data) => {
     row.appendChild(deleteCell);
 
     // Add row attribute so the deleteRow function can find a newly added row
-    row.setAttribute('data-value', newRow.id);
+    row.setAttribute('data-value', newRow.species_ID);
 
     // Add row to the table now last step yay
     currentTable.appendChild(row)
 
-    let selectMenu = document.getElementById('mySelect');
-    let option = document.createElement('option');
-    option.text = newRow.sName;
-    option.value = newRow.id;
-    selectMenu.addEventListener(option);
 }

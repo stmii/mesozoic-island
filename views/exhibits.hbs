@@ -1,0 +1,91 @@
+<html>
+<head>
+<title>Mesozoic Island</title>
+</head>
+
+<body>
+<h1>Welcome to Mesozoic Island!</h1>
+<nav>
+        <a href="/">Index</a>
+        <a href="/species/">Species</a>
+        <a href="/dinosaurs/">Dinosaurs</a>
+        <a href="/exhibits/">Exhibits</a>
+        <a href="/employees/">Employees and Volunteers</a>
+        <a href="/shifts/">View/Edit Shifts</a>
+</nav>
+<h2>Exhibits</h2>
+
+<div id="browse" style="display: block">
+<p><strong>View Exhibits</strong></p>
+
+{{!-- Create a table --}}
+<table id="exhibits-table" border="1" cellpadding="5">
+	
+	{{!-- Header section --}}
+	<thead>
+		<tr>
+			{{#each data.[0]}}
+			<th>
+				{{@key}}
+			</th>
+			{{/each}}
+		</tr>
+	</thead>
+
+	{{!-- Body section --}}
+	<tbody>
+		{{#each data}}
+		<tr data-value={{this.exhibit_ID}}>
+			<td>{{this.exhibit_ID}}</td>
+			<td>{{this.exhibit_name}}</td>
+			<td>{{this.has_dinosaurs}}</td>
+			<td>{{this.aquatic}}</td>
+			<td>{{this.land}}</td>
+			<td>{{this.flying}}</td>
+		</tr>
+		{{/each}}
+	</tbody>
+</table>
+
+{{!-- Form to add a record to the table --}}
+<div id="insert" style="display: block">
+<h2>Add an Exhibit</h2>
+<p>To add a new Exhibit, please enter its information below and click 'Submit'!</p>
+<form id="add-exhibit-form-ajax">
+
+	<label for="exhibit_name_input">Exhibit Name: </label>
+	<input type="text" name="exhibit_name_input" id="exhibit_name_input">
+	
+	<label for="has_dinosaurs_input">Does this Exhibit have Dinosaurs? </label>
+	<select name="has_dinosaurs_input" id="has_dinosaurs_input">
+		<option value="TRUE">YES</option>
+		<option value="FALSE">NO</option>
+	</select>
+
+	<label for="aquatic_input">Aquatic Exhibit? </label>
+	<select name="aquatic_input" id="aquatic_input">
+		<option value="TRUE">This exhibit contains a water feature.</option>
+		<option value="FALSE">This exhibit contains no water feature.</option>
+	</select>
+	
+	<label for="land_input">Land Exhibit? </label>
+	<select name="land_input" id="land_input">
+		<option value="TRUE">This exhibit contains land.</option>
+		<option value="FALSE">This exhibit contains no land.</option>
+	</select>
+
+	<label for="flying_input">Flying Exhibit? </label>
+	<select name="flying_input" id="flying_input">
+		<option value="TRUE">This exhibit is fully enclosed.</option>
+		<option value="FALSE">This exhibit is open to the air.</option>
+	</select>
+
+	<input type="submit">
+</form>
+
+<script src="../js/add_exhibit.js"></script>
+
+<p>&nbsp;</p>
+</div>
+</body>
+</html>

@@ -10,6 +10,7 @@ function deleteSpecies(species_ID) {
 
     // Tell AJAX how to resolve
     xhttp.onreadystatechange = () => {
+
         if (xhttp.readyState == 4 && xhttp.status == 204) {
 
             // delete the data from the table
@@ -24,8 +25,11 @@ function deleteSpecies(species_ID) {
 }
 
 function deleteRow(species_ID){
-    let table = document.getElementByID("species-table");
+
+
+    let table = document.getElementById("species-table");
     for (let i = 0, row; row = table.rows[i]; i++) {
+      console.log(table.rows[i].getAttribute("data-value"));
       if (table.rows[i].getAttribute("data-value") == species_ID) {
 	      table.deleteRow(i);
 	      break;
