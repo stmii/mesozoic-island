@@ -13,13 +13,13 @@
         <a href="/employees/">Employees and Volunteers</a>
         <a href="/shifts/">View/Edit Shifts</a>
 </nav>
-<h2>Species</h2>
+<h2>Shifts</h2>
 
 <div id="browse" style="display: block">
-<p><strong>View Species</strong></p>
+<p><strong>View and Edit Shifts</strong></p>
 
 {{!-- Create a table --}}
-<table id="species-table" border="1" cellpadding="5">
+<table id="shifts-table" border="1" cellpadding="5">
 	
 	{{!-- Header section --}}
 	<thead>
@@ -36,41 +36,45 @@
 	{{!-- Body section --}}
 	<tbody>
 		{{#each data}}
-		<tr data-value={{this.species_ID}}>
-			<td>{{this.species_ID}}</td>
-			<td>{{this.species_name}}</td>
-			<td>{{this.period}}</td>
-			<td>{{this.type}}</td>
-			<td>{{this.diet}}</td>
-			<td><button onclick="deleteSpecies({{this.species_ID}})">Delete</button></td>
+		<tr data-value={{this.shift_ID}}>
+			<td>{{this.shift_ID}}</td>
+			<td>{{this.employee_ID}}</td>
+			<td>{{this.exhibit_ID}}</td>
+			<td>{{this.duties}}</td>
+			<td>{{this.start_time}}</td>
+			<td>{{this.end_time}}</td>
+			<td><button onclick="deleteShift({{this.shift_ID}})">Delete</button></td>
 		</tr>
 		{{/each}}
 	</tbody>
 </table>
-<script src="../js/delete_species.js"></script>
+<script src="../js/delete_shift.js"></script>
 
 {{!-- Form to add a record to the table --}}
 <div id="insert" style="display: block">
-<h2>Add a Species</h2>
-<p>To add a new Species, please enter its information below and click 'Submit'!</p>
-<form id="add-species-form-ajax">
+<h2>Add a Shift</h2>
+<p>To add a new Shift, please enter the information below and click 'Submit'!</p>
+<form id="add-shift-form-ajax">
 
-	<label for="species_name_input">Species Name: </label>
-	<input type="text" name="species_name_input" id="species_name_input">
+	<label for="employee_ID_input">Employee: </label>
+	<input type="text" name="employee_ID_input" id="employee_ID_input">
 	
-	<label for="period_input">Period: </label>
-	<input type="text" name="period_input" id="period_input">
+	<label for="period_input">Exhibit(s): </label>
+	<input type="text" name="exhibit_ID_input" id="exhibit_ID_input">
 
-	<label for="type_input">Type: </label>
-	<input type="text" name="type_input" id="type_input">
+	<label for="type_input">Duties: </label>
+	<input type="text" name="duties_input" id="duties_input">
 	
-	<label for="diet_input">Diet: </label>
-	<input type="text" name="diet_input" id="diet_input">
+	<label for="start_time_input">Start Time: </label>
+	<input type="datetime" name="start_time_input" id="start_time_input">
+
+	<label for="end_time_input">End Time: </label>
+	<input type="datetime" name="start_time_input" id="start_time_input">
 
 	<input type="submit">
 </form>
 
-<script src="../js/add_species.js"></script>
+<script src="../js/add_shift.js"></script>
 
 <p>&nbsp;</p>
 </div>
