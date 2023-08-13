@@ -198,6 +198,37 @@ app.post('/add-exhibit-ajax/', function(req,res)
 	})
 });
 
+app.post('/add-employee-ajax/', function(req,res)
+{
+	//Capture the incoming data and parse it back to a JS object
+	let data = req.body;
+
+	// Create the query and run it on the database
+	query1 = `INSERT INTO Employees (employee_name, employee_job_title, employee_hourly) VALUES ('${data.employee_name}', '${data.employee_job_title}', ${data.employee_hourly})`;
+	
+	db.pool.query(query1, function(error, rows, fields){
+		// Check for error
+		if (error) {
+			// Log the error to the terminal and send status
+			console.log(error);
+			res.sendStatus(400);
+		}
+		else
+		{
+			query2 = "SELECT * FROM Employees;";
+			db.pool.query(query2, function(error, rows, fields){
+				if (error) {
+					console.log(error);
+					res.sendStatus(400);
+				}
+				else {
+					res.send(rows);
+				}
+			})
+		}
+	})
+});
+
 app.delete('/delete-species-ajax/', function(req,res,next){
 	let data = req.body;
 	let species_ID = parseInt(data.species_ID);

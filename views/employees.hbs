@@ -13,7 +13,7 @@
         <a href="/employees/">Employees and Volunteers</a>
         <a href="/shifts/">View/Edit Shifts</a>
 </nav>
-<h2>Species</h2>
+<h2>Employess and Volunteers</h2>
 
 <div id="browse" style="display: block">
 <p><strong>View Employees and Volunteers</strong></p>
@@ -51,18 +51,15 @@
 <p>To add a new Employee or Volunteer, please enter their information below and click 'Submit'! (volunteers will have an hourly rate of 0)</p>
 <form id="add-employee-form-ajax">
 
-	<label for="species_name_input">Species Name: </label>
-	<input type="text" name="species_name_input" id="species_name_input">
+	<label for="employee_name_input">Employee/Volunteer Name: </label>
+	<input type="text" name="employee_name_input" id="employee_name_input">
 	
-	<label for="period_input">Period: </label>
-	<input type="text" name="period_input" id="period_input">
+	<label for="employee_job_title_input">Job Title: </label>
+	<input type="text" name="employee_job_title_input" id="employee_job_title_input">
 
-	<label for="type_input">Type: </label>
-	<input type="text" name="type_input" id="type_input">
+	<label for="employee_hourly_input">Hourly Pay Rate: </label>
+	<input type="number" step="0.01" min="0" max="1000" name="employee_hourly_input" id="employee_hourly_input">
 	
-	<label for="diet_input">Diet: </label>
-	<input type="text" name="diet_input" id="diet_input">
-
 	<input type="submit">
 </form>
 
