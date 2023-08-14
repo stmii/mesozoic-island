@@ -178,8 +178,7 @@ app.post('/add-dinosaur-ajax/', function(req, res)
 					console.log(error);
 					res.sendStatus(400);
 				}
-				else {
-
+				else { 
 					res.send(rows);
 				}
 			})
@@ -254,7 +253,7 @@ app.post('/add-shift-ajax/', function(req,res)
 	let data = req.body;
 
 	// Create the query and run it on the database
-	query1 = `INSERT INTO Shifts (employee_ID, duties, start_time, end_time) VALUES ('$data.employee_ID}', '${data.duties}', '${data.start_time}', '${data.end_time}'})`;
+	query1 = `INSERT INTO Shifts (employee_ID, duties, start_time, end_time) VALUES ('${data.employee_ID}', '${data.duties}', '${data.start_time}', '${data.end_time}')`;
 
 	db.pool.query(query1, function(error, rows, fields){
 		// Check for error
@@ -269,6 +268,21 @@ app.post('/add-shift-ajax/', function(req,res)
 					res.sendStatus(400);
 				}
 				else {
+					// find shift_ID for new shift
+					let newRow = rows[rows.length - 1];
+					
+					// add each exhibit to ExhibitShifts
+					if(data.exhibit_ID_array.length>0) {
+						for (const exhibit of data.exhibit_ID_array) {
+							query = `INSERT INTO ExhibitShifts (exhibit_ID, shift_ID) VALUES (${exhibit}, ${newRow.shift_ID})`;
+							db.pool.query(query, function(error, rows, fields){
+								if(error) {
+									console.log(error);
+									res.sendStatus(400);
+								}
+							})
+						}
+					}
 					res.send(rows);
 				}
 			})
@@ -295,7 +309,7 @@ app.delete('/delete-species-ajax/', function(req,res,next){
 app.delete('/delete-shift-ajax/', function(req,res,next){
 	let data = req.body;
 	let shift_ID = parseInt(data.shift_ID);
-	let deleteShift = `DELETE FROM Shift WHERE shift_ID = ?`;
+	let deleteShift = `DELETE FROM Shifts WHERE shift_ID = ?`;
 
 	db.pool.query(deleteShift, [shift_ID], function(error, rows, fields) {
 		if (error) {

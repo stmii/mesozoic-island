@@ -11,28 +11,37 @@ addShift.addEventListener('submit', function (e) {
 
     //Get form fields we need to get data from 
     let inputEmployeeID = document.getElementById('employee_ID_input');
-    let inputExhibitID = document.getElementById('exhibit_ID_input');
     let inputDuties = document.getElementById('duties_input');
     let inputStartTime = document.getElementById('start_time_input');
     let inputEndTime = document.getElementById('end_time_input');
 
     // Get values from the form fields
     let employeeIDValue = inputEmployeeID.value;
-    let exhibitIDValue = inputExhibitID.value;
     let dutiesValue = inputDuties.value;
     let startTimeValue = inputStartTime.value;
     let endTimeValue = inputEndTime.value;
 
+    // Get array og selected exhibits, based on code from 
+    // https://www.techiedelight.com/get-selected-values-multi-select-dropdown-javascript/
+    var exhibit_ID_array = [];
+    for (var option of document.getElementById('exhibit_ID_input').options)
+    {
+	if (option.selected) {
+	    exhibit_ID_array.push(option.value);
+	}
+    }
+
+    
     // Put data into a javascript object
     let data = {
         employee_ID: employeeIDValue,
-        exhibit_ID: exhibitIDValue,
+        exhibit_ID_array: exhibit_ID_array,
         duties: dutiesValue,
         start_time: startTimeValue,
 	end_time: endTimeValue
     }
 
-    console.log(data.exhibit_ID);
+    console.log(exhibit_ID_array);
 
     // Setup AJAX request
     var xhttp = new XMLHttpRequest();
@@ -48,7 +57,6 @@ addShift.addEventListener('submit', function (e) {
 
             // Clear the input fields for another transaction
             inputEmployeeID.value = '';
-	    inputExhibitID.value = '';
             inputDuties.value = '';
             inputStartTime.value = '';
             inputEndTime.value = '';
@@ -96,7 +104,7 @@ addRowToTable = (data) => {
     deleteCell = document.createElement('button');
     deleteCell.innerHTML = "Delete";
     deleteCell.onclick = function() {
-        deleteSpecies(newRow.shift_ID);
+        deleteShift(newRow.shift_ID);
     };
 
     // Add new cells to row

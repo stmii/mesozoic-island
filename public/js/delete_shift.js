@@ -24,7 +24,7 @@ function deleteShift(shift_ID) {
     xhttp.send(JSON.stringify(data));
 }
 
-function deleteRow(species_ID){
+function deleteRow(shift_ID){
 
 
     let table = document.getElementById("shifts-table");
