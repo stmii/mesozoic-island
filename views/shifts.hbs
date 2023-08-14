@@ -56,11 +56,21 @@
 <p>To add a new Shift, please enter the information below and click 'Submit'!</p>
 <form id="add-shift-form-ajax">
 
-	<label for="employee_ID_input">Employee: </label>
-	<input type="text" name="employee_ID_input" id="employee_ID_input">
+	<label for="employee_ID_input">Employee/Volunteer: </label>
+	<select name"employee_ID_input" id="employee_ID_input">
+		<option value="">Select an Employee/Volunteer</option>
+		{{#each employees}}
+		<option value="{{this.employee_ID}}">{{this.species_name}}</option>
+		{{/each}}
+	</select>
 	
 	<label for="period_input">Exhibit(s): </label>
-	<input type="text" name="exhibit_ID_input" id="exhibit_ID_input">
+	<select name="exhibit_ID_input" id="exhibit_ID_input" multiple>
+		<option value="">No Exhibits</option>
+		{{#each exhibits}}
+		<option value="{{this.exhibit_ID}}">{{this.exhibit_name}}</option>
+		{{/each}}
+	</select>
 
 	<label for="type_input">Duties: </label>
 	<input type="text" name="duties_input" id="duties_input">

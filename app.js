@@ -91,10 +91,28 @@ app.get('/employees/', function(req, res)                 // This is the basic s
 app.get('/shifts/', function(req, res)                 // This is the basic syntax for what is called a 'route'
 	{
 		let query1 = "SELECT * FROM Shifts;";
+		let query2 = "SELECT * FROM ExhibitShifts;";
+		let query3 = "SELECT * FROM Employees;";
 
+
+		// query Dinosaurs
 		db.pool.query(query1, function(error, rows, fields){
+			// save the dinos
+			let shifts = rows;
+			
+			// query Species
+			db.pool.query(query2, function(error, rows, fields){
+				//save the species
+				let exhibitShifts = rows;
+				
+				// query Exhibits
+				db.pool.query(query3, function(error, rows, fields){
+					// save the rows
+					let employees = rows;
 
-			res.render('shifts', {data: rows});
+					res.render('shifts', {data: shifts, exhibitShifts: exhibitShifts, employees: employees});
+				})
+			})
 		})
 	});
 
