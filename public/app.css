@@ -24,7 +24,7 @@ h2 {
 
 table {
     position: relative;
-    bottom: 100pt;
+    bottom: 10pt;
     margin-left: auto;
     margin-right: auto;
     box-shadow: 0 0 10px #FAFAF0;
@@ -49,7 +49,7 @@ nav {
     padding: 1%;
     display: inline;
     position: relative;
-    bottom: 90px;
+    bottom: 9px;
 }
 
 nav a {

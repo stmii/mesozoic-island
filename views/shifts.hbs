@@ -1,6 +1,7 @@
 <html>
 <head>
 <title>Mesozoic Island</title>
+<link rel="stylesheet" href="../app.css">
 </head>
 
 <body>
@@ -16,7 +17,6 @@
 <h2>Shifts</h2>
 
 <div id="browse" style="display: block">
-<p><strong>View and Edit Shifts</strong></p>
 
 {{!-- Create a table --}}
 <table id="shifts-table" border="1" cellpadding="5">
@@ -60,7 +60,7 @@
 	<select name"employee_ID_input" id="employee_ID_input">
 		<option value="">Select an Employee/Volunteer</option>
 		{{#each employees}}
-		<option value="{{this.employee_ID}}">{{this.species_name}}</option>
+		<option value="{{this.employee_ID}}">{{this.employee_name}}</option>
 		{{/each}}
 	</select>
 	
