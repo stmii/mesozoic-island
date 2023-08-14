@@ -32,7 +32,7 @@ addShift.addEventListener('submit', function (e) {
 	end_time: endTimeValue
     }
 
-    console.log(exhibit_ID);
+    console.log(data.exhibit_ID);
 
     // Setup AJAX request
     var xhttp = new XMLHttpRequest();
