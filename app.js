@@ -248,6 +248,34 @@ app.post('/add-employee-ajax/', function(req,res)
 	})
 });
 
+app.post('/add-shift-ajax/', function(req,res)
+{
+	// Capture the incoming data and parse it back to a JS object
+	let data = req.body;
+
+	// Create the query and run it on the database
+	query1 = `INSERT INTO Shifts (employee_ID, duties, start_time, end_time) VALUES ('$data.employee_ID}', '${data.duties}', '${data.start_time}', '${data.end_time}'})`;
+
+	db.pool.query(query1, function(error, rows, fields){
+		// Check for error
+		if (error) {
+			console.log(error);
+			res.sendStatus(400);
+		} else {
+			query2 = "SELECT * FROM Shifts;";
+			db.pool.query(query2, function(error, rows, fields){
+				if (error) {
+					console.log(error);
+					res.sendStatus(400);
+				}
+				else {
+					res.send(rows);
+				}
+			})
+		}
+	})
+});
+		
 app.delete('/delete-species-ajax/', function(req,res,next){
 	let data = req.body;
 	let species_ID = parseInt(data.species_ID);
