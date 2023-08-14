@@ -43,7 +43,8 @@ CREATE TABLE Dinosaurs (
     dinosaur_name VARCHAR(55) NOT NULL,
     dinosaur_birthdate DATE NOT NULL,
     PRIMARY KEY (dinosaur_ID),
-    FOREIGN KEY (species_ID) REFERENCES Species(species_ID),
+    FOREIGN KEY (species_ID) REFERENCES Species(species_ID) ON DELETE
+    CASCADE,
     FOREIGN KEY (exhibit_ID) REFERENCES Exhibits(exhibit_ID)
 );
 
@@ -63,20 +64,19 @@ CREATE TABLE Employees (
 CREATE TABLE Shifts (
     shift_ID INT AUTO_INCREMENT NOT NULL,
     employee_ID INT NOT NULL,
-    exhibit_ID INT,
     duties VARCHAR(255) NOT NULL,
     start_time TIME NOT NULL,
     end_time TIME NOT NULL,
     PRIMARY KEY (shift_ID),
-    FOREIGN KEY (employee_ID) REFERENCES Employees(employee_ID),
+    FOREIGN KEY (employee_ID) REFERENCES Employees(employee_ID) ON DELETE CASCADE, 
     UNIQUE INDEX shift_ID_UNIQUE (shift_ID ASC)
 );
 
 CREATE OR REPLACE TABLE ExhibitShifts (
     exhibit_ID INT NOT NULL,
     shift_ID INT NOT NULL,
-    FOREIGN KEY (exhibit_ID) REFERENCES Exhibits(exhibit_ID),
-    FOREIGN KEY (shift_ID) REFERENCES Shifts(shift_ID)
+    FOREIGN KEY (exhibit_ID) REFERENCES Exhibits(exhibit_ID) ON UPDATE CASCADE
+    FOREIGN KEY (shift_ID) REFERENCES Shifts(shift_ID) ON UPDATE CASCADE
 );
 
 -- Adding data to the tables we just created 
@@ -99,9 +99,9 @@ VALUES (1, 'horned land creatures', TRUE, FALSE, TRUE, FALSE),
 -- Add to dinosaurs
 
 INSERT INTO Dinosaurs (dinosaur_ID, species_ID, exhibit_ID, dinosaur_name, dinosaur_birthdate)
-VALUES (1, 1, 2, 'Teddy', 11152022),
-(2, 3, 3, 'Lilith', 09172022),
-(3, 2, 1, 'Diablo', 10312022);
+VALUES (1, 1, 2, 'Teddy', 20221115),
+(2, 3, 3, 'Lilith', 20220917),
+(3, 2, 1, 'Diablo', 20221031);
 
 
 -- Add to Employees
