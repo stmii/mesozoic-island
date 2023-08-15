@@ -20,7 +20,7 @@ app.set('view engine', '.hbs');
 // Static Files
 app.use(express.static('public'));
 
-PORT        = 1712;                 // Set a port number at the top so it's easy to change in the future
+PORT        = 1713;                 // Set a port number at the top so it's easy to change in the future
 
 /*
 	ROUTES
@@ -93,25 +93,30 @@ app.get('/shifts/', function(req, res)                 // This is the basic synt
 		let query1 = "SELECT * FROM Shifts;";
 		let query2 = "SELECT * FROM Exhibits;";
 		let query3 = "SELECT * FROM Employees;";
-
+		let query4 = "SELECT * FROM ExhibitShifts;";
 
 		// query Shifts
 		db.pool.query(query1, function(error, rows, fields){
-			// save the 
+			// save the shifts
 			let shifts = rows;
 			
-			// query Species
+			// query Exhibits
 			db.pool.query(query2, function(error, rows, fields){
-				//save the species
+				//save the exhibitss
 				let exhibits = rows;
 				
-				// query Exhibits
+				// query Employees
 				db.pool.query(query3, function(error, rows, fields){
-					// save the rows
+					// save the Employees
 					let employees = rows;
 					
-					// query 
-					res.render('shifts', {data: shifts, exhibits: exhibits, employees: employees});
+					// query EmployeeShifts
+					db.pool.query(query4, function(error, rows, fields){
+						let exhibitShifts = rows;
+						console.log(exhibitShifts);
+						// send data
+						res.render('shifts', {data: shifts, exhibits: exhibits, employees: employees, exhibitShifts: exhibitShifts});
+					})
 				})
 			})
 		})
@@ -320,6 +325,37 @@ app.delete('/delete-shift-ajax/', function(req,res,next){
 		}
 	})
 });
+
+app.put('/put-shift-ajax', function(req,res,next){
+	let data = req.body;
+
+	let query1 = `DELETE FROM ExhibitShifts WHERE shift_ID = ${data.shift_ID};`;
+	db.pool.query(query1, function(error, rows, fields) {
+		if (error) {
+			console.log(error);
+			res.sendStatus(400);
+		} else {
+			console.log(data.exhibit_ID_array.length);
+			if(data.exhibit_ID_array.length>0){
+				console.log('test1');
+				for(const exhibit of data.exhibit_ID_array) {
+					if(exhibit != '') {
+						query = `INSERT INTO ExhibitShifts (exhibit_ID, shift_ID) VALUES (${exhibit}, ${data.shift_ID})`;
+						db.pool.query(query, function(error, rows, fields) {
+
+							if(error) {
+								console.log(error);
+								res.sendStatus(400);
+							}
+						})
+					}
+				}
+			}
+			res.sendStatus(204);
+		}
+	})
+});
+			
 
 /*
 	LISTENER

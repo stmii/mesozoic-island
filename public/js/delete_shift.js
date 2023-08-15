@@ -22,6 +22,8 @@ function deleteShift(shift_ID) {
     }
     // Send the request and wait for the response
     xhttp.send(JSON.stringify(data));
+    location.reload()
+	
 }
 
 function deleteRow(shift_ID){

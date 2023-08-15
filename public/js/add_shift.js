@@ -41,8 +41,6 @@ addShift.addEventListener('submit', function (e) {
 	end_time: endTimeValue
     }
 
-    console.log(exhibit_ID_array);
-
     // Setup AJAX request
     var xhttp = new XMLHttpRequest();
     xhttp.open("POST", "/add-shift-ajax/", true);
@@ -67,6 +65,7 @@ addShift.addEventListener('submit', function (e) {
     }
     // Send request and wait for the response
     xhttp.send(JSON.stringify(data));
+    location.reload();
 })
 
 // Creates a single row from an Object representing a single record from Species table 

@@ -29,6 +29,7 @@
 				{{@key}}
 			</th>
 			{{/each}}
+			<th>Exhibits</th>
 			<th>delete</th>
 		</tr>
 	</thead>
@@ -42,12 +43,33 @@
 			<td>{{this.duties}}</td>
 			<td>{{this.start_time}}</td>
 			<td>{{this.end_time}}</td>
+			<td>See Table Below for Exhibits<td>
 			<td><button onclick="deleteShift({{this.shift_ID}})">Delete</button></td>
 		</tr>
 		{{/each}}
 	</tbody>
 </table>
 <script src="../js/delete_shift.js"></script>
+
+<h2>ExhibitShifts</h2>
+<table id="exhibit-shifts-table" border="1" cellpadding="5">
+	
+	<thead>
+		<tr>
+			<th>Shift_ID</th>
+			<th>Exhibit_ID</th>
+		</tr>
+	</thead>
+
+	<tbody>
+		{{#each exhibitShifts}}
+		<tr data-value={{this.shift_ID}}{{this.exhibit_ID}}>
+			<td>{{this.shift_ID}}</td>
+			<td>{{this.exhibit_ID}}</td>
+		</tr>
+		{{/each}}
+	</tbody>
+</table>
 
 {{!-- Form to add a record to the table --}}
 <div id="insert" style="display: block">
@@ -84,6 +106,29 @@
 </form>
 
 <script src="../js/add_shift.js"></script>
+
+<h2>Update a Shift</h2>
+<p>To update a specific shift, select the shift from the drop-down menu on the left and the desired exhibits on the right</p>
+<form id="update-shift-form-ajax">
+
+	<label for="shift_ID_input">Select Shift: </label>
+	<select name="shift_ID_input" id="shift_ID_input">
+		<option value="test">Select a Shift</option>
+		{{#each data}}
+		<option value="{{this.shift_ID}}">Shift ID: {{this.shift_ID}}, Employee ID: {{this.employee_ID}}, Shift Time: {{this.start_time}}-{{this.end_time}}</option>
+		{{/each}}
+	</select>
+
+	<label for="exhibit_ID_inputs">Select Exhibits: </label>
+	<select name="exhibit_ID_inputs" id="exhibit_ID_inputs" multiple>
+		<option value "">No Exhibits</option>
+		{{#each exhibits}}
+		<option value="{{this.exhibit_ID}}">{{this.exhibit_name}}</option>
+		{{/each}}
+	</select>
+<input type="submit">
+</form>
+<script src="../js/update_shift.js"></script>
 
 <p>&nbsp;</p>
 </div>
