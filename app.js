@@ -113,7 +113,7 @@ app.get('/shifts/', function(req, res)                 // This is the basic synt
 					// query EmployeeShifts
 					db.pool.query(query4, function(error, rows, fields){
 						let exhibitShifts = rows;
-						console.log(exhibitShifts);
+						
 						// send data
 						res.render('shifts', {data: shifts, exhibits: exhibits, employees: employees, exhibitShifts: exhibitShifts});
 					})
@@ -328,16 +328,17 @@ app.delete('/delete-shift-ajax/', function(req,res,next){
 
 app.put('/put-shift-ajax', function(req,res,next){
 	let data = req.body;
-
+	
+	// Delete all rows from ExhibitShifts with that Shift
 	let query1 = `DELETE FROM ExhibitShifts WHERE shift_ID = ${data.shift_ID};`;
 	db.pool.query(query1, function(error, rows, fields) {
 		if (error) {
 			console.log(error);
 			res.sendStatus(400);
 		} else {
-			console.log(data.exhibit_ID_array.length);
 			if(data.exhibit_ID_array.length>0){
-				console.log('test1');
+				
+				// Add back selected exhibits to ExhibitShifts, if any	
 				for(const exhibit of data.exhibit_ID_array) {
 					if(exhibit != '') {
 						query = `INSERT INTO ExhibitShifts (exhibit_ID, shift_ID) VALUES (${exhibit}, ${data.shift_ID})`;

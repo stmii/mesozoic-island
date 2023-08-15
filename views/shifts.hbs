@@ -29,7 +29,6 @@
 				{{@key}}
 			</th>
 			{{/each}}
-			<th>Exhibits</th>
 			<th>delete</th>
 		</tr>
 	</thead>
@@ -43,7 +42,6 @@
 			<td>{{this.duties}}</td>
 			<td>{{this.start_time}}</td>
 			<td>{{this.end_time}}</td>
-			<td>See Table Below for Exhibits<td>
 			<td><button onclick="deleteShift({{this.shift_ID}})">Delete</button></td>
 		</tr>
 		{{/each}}
@@ -51,7 +49,7 @@
 </table>
 <script src="../js/delete_shift.js"></script>
 
-<h2>ExhibitShifts</h2>
+<h2>ExhibitShifts: Which Shifts cover Which Exhibits?</h2>
 <table id="exhibit-shifts-table" border="1" cellpadding="5">
 	
 	<thead>
@@ -74,7 +72,7 @@
 {{!-- Form to add a record to the table --}}
 <div id="insert" style="display: block">
 <h2>Add a Shift</h2>
-<p>To add a new Shift, please enter the information below and click 'Submit'!</p>
+<p>To add a new Shift, please enter the information sbove and click 'Submit'! Note: you can add multiple exhibits to a shift by holding ctrl and clicking on each one you want to add.</p>
 <form id="add-shift-form-ajax">
 
 	<label for="employee_ID_input">Employee/Volunteer: </label>
@@ -108,7 +106,7 @@
 <script src="../js/add_shift.js"></script>
 
 <h2>Update a Shift</h2>
-<p>To update a specific shift, select the shift from the drop-down menu on the left and the desired exhibits on the right</p>
+<p>To update a specific shift, select the shift from the drop-down menu on the left and the desired exhibits on the right. Note: you can add multiple exhibits to a shift by holding ctrl and clicking on each one you want to add or update the shift to contain no exhibits by selecting only "No Exhibits".</p>
 <form id="update-shift-form-ajax">
 
 	<label for="shift_ID_input">Select Shift: </label>
