@@ -118,6 +118,13 @@ VALUES (1, 1, 'Monitor the aquatic creatures and answer questions about Lilith i
 (2, 2, 'Make sure no one gets too close to Teddy and answer questions about him if asked', 1000, 1500),
 (3, 3, 'Explain to guests that this exhibit is currently closed as the dinosaur is at the vet', 0900, 1200);
 
+-- Add to ExhibitShifts
+
+INSERT INTO ExhibitShifts (exhibit_ID, shift_ID)
+VALUES (2, 1),
+(3, 2),
+(4, 3);
+
 -- Display all tables
 
 SHOW TABLES;
@@ -127,12 +134,14 @@ DESCRIBE Dinosaurs;
 DESCRIBE Exhibits;
 DESCRIBE Employees;
 DESCRIBE Shifts;
+DESCRIBE ExhibitShifts;
 
 SELECT * FROM Species;
 SELECT * FROM Dinosaurs;
 SELECT * FROM Exhibits;
 SELECT * FROM Employees;
 SELECT * FROM Shifts;
+SELECT * FROM ExhibitShifts;
 
 
 SET FOREIGN_KEY_CHECKS = 1;
